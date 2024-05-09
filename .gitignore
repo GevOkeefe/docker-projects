@@ -1,0 +1,21 @@
+# Global
+.*.swp
+.DS_Store
+
+# Application
+src/*
+!/src/example
+data/
+
+# PHPStorm
+.idea
+
+# Netbeans
+nbproject/
+
+# VSCode
+.vscode/
+
+# Certificates
+ssh/id_rsa
+ssh/known_hosts
