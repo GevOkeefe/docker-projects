@@ -52,7 +52,7 @@ services:
         volumes:
             - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
             - "./src/${PROJECT_DIR}:/var/www/html"
-            - "./ssh:/home/docker/.ssh:ro"
+            - "./ssh:/var/www/html/.ssh:ro"
         networks:
             - connector
     myadmin:
