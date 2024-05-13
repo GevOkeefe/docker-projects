@@ -46,6 +46,8 @@ Make sure you have Docker and Docker Compose installed on your system.
 
 5. Traefik is accessible at `http://traefik.localhost`.
 
+6. Mailpit is accessible at `http://mail.localhost`.
+
 ## Docker Compose Configuration
 
 The `docker-compose.yml` file defines the services and configurations for the Docker containers:
@@ -54,6 +56,7 @@ The `docker-compose.yml` file defines the services and configurations for the Do
 - **nginx**: Nginx server serving PHP files.
 - **php**: PHP service with the specified PHP version.
 - **myadmin**: PHPMyAdmin for database management.
+- **mailer**: Mailpit client for mail management.
 - **mysqldb**: MySQL database.
 
 ## Contributing
