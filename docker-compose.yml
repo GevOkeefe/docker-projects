@@ -84,6 +84,18 @@ services:
             - dbdata:/var/lib/mysql
         networks:
             - connector
+    mailer:
+        image: axllent/mailpit
+        container_name: mailer
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.mailer.rule=Host(`mail.localhost`)"
+            - "traefik.http.services.mailer.loadbalancer.server.port=8025"
+        environment:
+            MP_SMTP_AUTH_ACCEPT_ANY: 1
+            MP_SMTP_AUTH_ALLOW_INSECURE: 1
+        networks:
+            - connector
 networks:
     connector:
         driver: bridge
