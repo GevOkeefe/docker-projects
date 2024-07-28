@@ -18,17 +18,20 @@ RUN apt update && apt install -y \
     libpng-dev \
     libsodium-dev \
     libssh2-1-dev \
+    libssl-dev \
     libwebp-dev \
     libxslt1-dev \
     libzip-dev \
     ssh \
-    software-properties-common
+    software-properties-common \
+    redis-server
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 RUN pecl channel-update pecl.php.net && pecl install \
     imagick-3.7.0 \
     ssh2-1.3.1 \
     xdebug-3.3.1 \
+    redis \
   && pecl clear-cache \
   && rm -rf /tmp/pear
 
@@ -55,10 +58,12 @@ RUN docker-php-ext-configure \
     sysvshm \
     xsl \
     zip \
+    ftp \
   && docker-php-ext-enable \
     imagick \
     ssh2 \
-    xdebug
+    xdebug \
+    redis
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

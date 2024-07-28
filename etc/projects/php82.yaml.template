@@ -1,0 +1,4 @@
+services:
+  php82-projects:
+    volumes:
+      - "../../src/example:/var/www/html/example"

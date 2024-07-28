@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+    mysqldb:
+        image: mysql:${MYSQL_VERSION}
+        container_name: ${MYSQL_HOST}
+        restart: always
+        env_file:
+            - ".env"
+        environment:
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        volumes:
+            - dbdata:/var/lib/mysql
+        networks:
+            - connector
+    mysqldb1:
+        image: mysql:${MYSQL_VERSION_1}
+        container_name: ${MYSQL_HOST_1}
+        restart: always
+        env_file:
+            - ".env"
+        environment:
+            - MYSQL_DATABASE=${MYSQL_DATABASE_1}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD_1}
+            - MYSQL_USER=${MYSQL_USER_1}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD_1}
+        volumes:
+            - dbdata1:/var/lib/mysql
+        networks:
+            - connector
+volumes:
+    dbdata:
+    dbdata1:
+

@@ -1,0 +1,6 @@
+services:
+  domains:
+    labels:
+      # To specify different hosts add:
+      # Host(`host_one.app.localhost`) || Host(`host_two.app.localhost`)
+      - "traefik.http.routers.nginx.rule=Host(`app.localhost`)"

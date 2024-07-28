@@ -1,0 +1,4 @@
+services:
+  php80-projects:
+    volumes:
+      - "../../src/example:/var/www/html/example"
