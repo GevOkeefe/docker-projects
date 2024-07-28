@@ -6,6 +6,11 @@
 src/*
 !/src/example
 data/
+etc/projects/*
+!etc/projects/*.template
+etc/nginx/conf.d/*.conf
+etc/nginx/domains.yaml
+.env
 
 # PHPStorm
 .idea
