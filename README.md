@@ -2,6 +2,11 @@
 
 This Docker project allows you to set up a development environment for PHP projects with Nginx, PHP, MySQL, and phpMyAdmin using Docker containers. The project is configured via Docker Compose and can be easily customized using environment variables and configuration files.
 
+### Available PHP versions
+- 8.0
+- 8.2
+- 8.5
+
 ## Getting Started
 
 ### Prerequisites
