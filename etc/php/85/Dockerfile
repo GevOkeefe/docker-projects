@@ -1,4 +1,6 @@
-FROM php:8.0-fpm
+FROM php:8.5.0-fpm
+
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 
 RUN apt update && apt install -y \
     apt-transport-https \
@@ -16,20 +18,25 @@ RUN apt update && apt install -y \
     libmcrypt-dev \
     libonig-dev \
     libpng-dev \
+    librabbitmq-dev \
     libsodium-dev \
     libssh2-1-dev \
+    libssl-dev \
     libwebp-dev \
     libxslt1-dev \
     libzip-dev \
     ssh \
-    software-properties-common\
-    redis-server
+    redis-server \
+    nodejs \
+    npm \
+    symfony-cli
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 RUN pecl channel-update pecl.php.net && pecl install \
-    imagick-3.7.0 \
+    amqp-2.2.0 \
+    imagick-3.8.1 \
     ssh2-1.3.1 \
-    xdebug-3.2.2 \
+    xdebug-3.5.0 \
     redis \
   && pecl clear-cache \
   && rm -rf /tmp/pear
@@ -41,12 +48,12 @@ RUN docker-php-ext-configure \
     bz2 \
     calendar \
     exif \
+    ftp \
     gd \
     gettext \
     intl \
     mbstring \
     mysqli \
-    opcache \
     pcntl \
     pdo_mysql \
     soap \
@@ -58,6 +65,7 @@ RUN docker-php-ext-configure \
     xsl \
     zip \
   && docker-php-ext-enable \
+    amqp \
     imagick \
     ssh2 \
     xdebug \

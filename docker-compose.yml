@@ -1,4 +1,3 @@
-version: '3.7'
 services:
     traefik:
         image: traefik:latest
@@ -50,6 +49,24 @@ services:
             ssh:
                 - default
             dockerfile: etc/php/82/Dockerfile
+        environment:
+            - PHP_IDE_CONFIG=serverName=PHPSTORM
+        volumes:
+            - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
+            - "./ssh:/home/docker/.ssh:ro"
+        networks:
+            - connector
+    php85:
+        image: php85
+        container_name: php85
+        restart: unless-stopped
+        extends:
+            file: ./etc/projects/php85.yaml
+            service: php85-projects
+        build:
+            ssh:
+                - default
+            dockerfile: etc/php/85/Dockerfile
         environment:
             - PHP_IDE_CONFIG=serverName=PHPSTORM
         volumes:

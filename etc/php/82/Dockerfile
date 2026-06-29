@@ -1,5 +1,7 @@
 FROM php:8.2-fpm
 
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
+
 RUN apt update && apt install -y \
     apt-transport-https \
     ca-certificates \
@@ -23,9 +25,13 @@ RUN apt update && apt install -y \
     libxslt1-dev \
     libzip-dev \
     ssh \
-    software-properties-common \
-    redis-server
+    redis-server \
+    nodejs \
+    npm \
+    symfony-cli
 RUN apt clean && rm -rf /var/lib/apt/lists/*
+
+# removed    software-properties-common \
 
 RUN pecl channel-update pecl.php.net && pecl install \
     imagick-3.7.0 \
